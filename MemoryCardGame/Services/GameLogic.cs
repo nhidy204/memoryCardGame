@@ -4,7 +4,6 @@ namespace MemoryCardGame.Services;
 
 public class GameLogic
 {
-    // ── state (tương đương useState) ──────────────────────────
     public List<CardModel> Cards { get; private set; } = new();
     public int Score { get; private set; }
     public int Moves { get; private set; }
@@ -23,10 +22,8 @@ public class GameLogic
         InitializeGame();
     }
 
-    // ── initializeGame (tương đương useCallback + useEffect) ──
     public void InitializeGame()
     {
-        // Fisher-Yates shuffle (giống shuffleArray trong JS)
         var shuffled = _cardValues.ToArray();
         var rng = new Random();
         for (int i = shuffled.Length - 1; i > 0; i--)
@@ -50,7 +47,6 @@ public class GameLogic
         OnStateChanged?.Invoke();
     }
 
-    // ── handleCardClick ───────────────────────────────────────
     public async Task HandleCardClick(CardModel card)
     {
         if (card.IsFlipped || card.IsMatched || IsLocked || _flippedCards.Count == 2)
@@ -72,7 +68,7 @@ public class GameLogic
                 card.IsMatched = true;
                 Score++;
             }
-            else // không khớp → lật lại
+            else 
             {
                 await Task.Delay(1000); // tương đương setTimeout 1000ms
                 firstCard.IsFlipped = false;
