@@ -1,0 +1,20 @@
+<div class="game-header">
+    <h1>Memory Card Game</h1>
+    <div class="stats">
+        <div class="stat-item">
+            <span class="stat-label">Score:</span>
+            <span class="stat-value">@Score</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Moves:</span>
+            <span class="stat-value">@Moves</span>
+        </div>
+    </div>
+    <button class="reset-btn" @onclick="OnReset">New Game</button>
+</div>
+
+@code {
+    [Parameter] public int Score { get; set; }
+    [Parameter] public int Moves { get; set; }
+    [Parameter] public EventCallback OnReset { get; set; }
+}

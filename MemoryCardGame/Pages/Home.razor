@@ -1,0 +1,39 @@
+﻿@page "/"
+@inject MemoryCardGame.Services.GameLogic Game
+@implements IDisposable
+
+@using MemoryCardGame.Components
+@using MemoryCardGame.Models
+@using MemoryCardGame.Services
+
+<div class="app">
+    <GameHeader Score="Game.Score"
+                Moves="Game.Moves"
+                OnReset="Game.InitializeGame" />
+
+    @if (Game.IsGameComplete)
+    {
+        <WinMessage Moves="Game.Moves" />
+    }
+
+    <div class="cards-grid">
+        @foreach (var card in Game.Cards)
+        {
+            <Card CardData="card" OnClick="Game.HandleCardClick" />
+        }
+    </div>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        // tương đương useEffect + subscribe re-render
+        Game.OnStateChanged += StateHasChanged;
+    }
+
+    // cleanup khi component unmount (tránh memory leak)
+    public void Dispose()
+    {
+        Game.OnStateChanged -= StateHasChanged;
+    }
+}

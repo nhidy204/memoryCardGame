@@ -1,0 +1,18 @@
+<div class="card @(CardData.IsFlipped ? "flipped" : "") @(CardData.IsMatched ? "matched" : "")"
+     @onclick="HandleClick">
+    <div class="card-front">?</div>
+    <div class="card-back">@CardData.Value</div>
+</div>
+
+@code {
+    [Parameter] public CardModel CardData { get; set; } = default!;
+    [Parameter] public EventCallback<CardModel> OnClick { get; set; }
+
+    //onClick={() => onClick(card)}
+    private async Task HandleClick()
+    {
+        await OnClick.InvokeAsync(CardData);
+    }
+}
+
+@using MemoryCardGame.Models
