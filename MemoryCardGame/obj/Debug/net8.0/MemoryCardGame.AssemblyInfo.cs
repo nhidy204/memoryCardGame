@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MemoryCardGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+153d4e64c67cd9d234f35ba03952e890d9237253")]
 [assembly: System.Reflection.AssemblyProductAttribute("MemoryCardGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MemoryCardGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
